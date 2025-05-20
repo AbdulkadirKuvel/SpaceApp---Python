@@ -5,9 +5,10 @@ def main():
     reader = fr.FileReading("./data/Yuksel", "Gezegenler.txt",
                             "Araclar.txt", "Kisiler.txt");
 
-    reader.readPeople();
-    reader.readPlanets();
-    reader.readSpaceships();
+    people = reader.readPeople();
+    planets = reader.readPlanets();
+    spacecrafts = reader.readSpaceships();
+
 
 
 
