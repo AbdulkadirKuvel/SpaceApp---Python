@@ -1,15 +1,19 @@
 import src.FileReading as fr
+from src.Simulation import Simulation
 
 
 def main():
     reader = fr.FileReading("./data/Yuksel", "Gezegenler.txt",
-                            "Araclar.txt", "Kisiler.txt");
+                            "Araclar.txt", "Kisiler.txt")
 
-    people = reader.readPeople();
-    planets = reader.readPlanets();
-    spacecrafts = reader.readSpaceships();
+    people = reader.readPeople()
+    spacecrafts = reader.readSpaceships()
+    planets = reader.readPlanets()
 
+    simulation = Simulation(people, spacecrafts, planets)
 
+    simulation.connector()
+    simulation.simulate()
 
 
 if (__name__ == "__main__"):
