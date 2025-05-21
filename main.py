@@ -3,7 +3,7 @@ from src.Simulation import Simulation
 
 
 def main():
-    reader = fr.FileReading("./data/Yuksel", "Gezegenler.txt",
+    reader = fr.FileReading("./data/My datas/Old", "Gezegenler.txt",
                             "Araclar.txt", "Kisiler.txt")
 
     people = reader.readPeople()

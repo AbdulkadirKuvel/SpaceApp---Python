@@ -19,17 +19,25 @@ class FileReading():
         self.people: List[Person] = []
 
     def readPlanets(self):
-        with open(self.path + "/" + self.planet_path, encoding="utf-8") as file:
-            for line in file:
-                line = line.rstrip()
-                parts = line.split("#")
-                name = parts[0]
-                kind = parts[1] # TODO
-                hours_of_a_day = int(parts[2])
-                date = parts[3]
-                planet = Planet(name, hours_of_a_day, date)
-                self.planets.append(planet)
+        try:
+            with open(self.path + "/" + self.planet_path, encoding="utf-8") as file:
+                for line in file:
+                    line = line.rstrip()
+                    parts = line.split("#")
+                    name = parts[0]
+                    kind = parts[1] # TODO
+                    hours_of_a_day = int(parts[2])
+                    date = parts[3]
+                    planet = Planet(name, hours_of_a_day, date)
+                    self.planets.append(planet)
+        except Exception as e:
+            print(f"Error reading planets file: {e}")
         return self.planets
+
+    # def readSpaceships(self):
+    #     with open(self.path + "/" + self.spaceship_path, encoding="utf-8") as file:
+    #         for line in file:
+    #     return self.planets
 
     def readSpaceships(self):
         with open(self.path + "/" + self.spaceship_path, encoding="utf-8") as file:

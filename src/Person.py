@@ -8,8 +8,8 @@ class Person():
         self.alive = True
 
     def update(self):
+        self.left_hours -= 1
         if self.left_hours <= 0:
             self.alive = False
             return 1
-        self.left_hours -= 1
         return 0
