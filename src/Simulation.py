@@ -1,7 +1,7 @@
 from typing import List
-from src.Person import Person
-from src.Spaceship import Spacecraft
-from src.Planets.Planet import Planet
+from src.entities.Person import Person
+from src.entities.Spacecraft import Spacecraft
+from src.entities.Planets.Planet import Planet
 from src.EnumVars import SpacecraftStatus as state
 import os
 from time import sleep
@@ -55,9 +55,11 @@ class Simulation():
             spacecraft.eval_arrival()
 
     def simulate(self):
+        self.connector()
+                
         itr = 1
         while(1):
-            sleep(.050)
+            sleep(.020)
             for planet in self.planets:
                 planet.update()
                 planet.population = 0

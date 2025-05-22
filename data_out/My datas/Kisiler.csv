@@ -1,0 +1,35 @@
+Name,Spaceship,Alive
+Astronot01,Orion-X2,False
+Astronot02,Orion-X2,False
+Astronot03,Orion-X2,False
+Astronot04,AstraNova w5,False
+Astronot05,AstraNova w5,False
+Astronot06,XYRON-B1,False
+Astronot07,XYRON-B1,False
+Astronot08,XYRON-B1,True
+Astronot09,VegaPro-12,False
+Astronot10,VegaPro-12,False
+Astronot11,Lyra9B,False
+Astronot12,Lyra9B,False
+Astronot13,Lyra9B,False
+Astronot14,Lyra9B,True
+Tanimsiz01,CosmoProbe,True
+Tanimsiz02,CosmoProbe,False
+Tanimsiz03,CosmoProbe,False
+Tanimsiz04,CosmoProbe,False
+Tanimsiz05,CosmoProbe,False
+Astronot20,Helios-3A,False
+Astronot21,Helios-3A,False
+Astronot22,Helios-3A,False
+Astronot23,Helios-3A,False
+Android01,Helios-3A,True
+Android02,Helios-3A,False
+Android03,Helios-3A,True
+Android04,Titan F11C,True
+Android05,Titan F11C,True
+Android06,Titan F11C,False
+Android07,Crimson-4o,False
+Android08,Crimson-4o,False
+Android09,AltairOne,True
+Android10,AltairOne,False
+Android11,AltairOne,False
