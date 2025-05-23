@@ -25,13 +25,12 @@ class Simulator():
                                   self.spacecraft_file,
                                   self.planets_file)
         self.simulator: Simulation = NotImplemented
-        self.OK = True
+        self.files_ok = True
 
     def simulate(self):
         try:
             self.read_files()
             self.simulator.simulate()
-            clear()
         except FileNotFoundError:
             print(fs.apply("Missing File: Please check the files", "red"))
             readkey()
@@ -39,7 +38,7 @@ class Simulator():
             
 
     def read_files(self):
-        if (not self.OK):
+        if (not self.files_ok):
             raise FileNotFoundError
         else:
             people = self.reader.readPeople()
@@ -48,37 +47,15 @@ class Simulator():
             self.simulator = Simulation(people, spacecrafts, planets)
 
     def menu(self):
+        ax1 = fs.apply("sim >>", "purple")
+        ax2 = fs.apply("      ", "purple")
+        ax3 = fs.apply("      ", "purple")
+
+        line = 1
         while True:
-            print(fs.apply("startup: Searching files in default path", "yellow"))
-
-            print(f"Searching {self.people_file} \t", end="")
-            if (self.reader.control_people()):
-                print(fs.apply("OK", "green"))
-            else:
-                print(fs.apply("FAILED", "red"))
-                self.OK = False
-
-            print(f"Searching {self.spacecraft_file} \t", end="")
-            if (self.reader.control_spacecrafts()):
-                print(fs.apply("OK", "green"))
-            else:
-                print(fs.apply("FAILED", "red"))
-                self.OK = False
-
-            print(f"Searching {self.planets_file} \t", end="")
-            if (self.reader.control_planets()):
-                print(fs.apply("OK", "green"))
-            else:
-                print(fs.apply("FAILED", "red"))
-                self.OK = False
-
-            ax1 = fs.apply("sim >>", "purple")
-            ax2 = fs.apply("      ", "purple")
-            ax3 = fs.apply("      ", "purple")
-
-            line = 1
-
+            self.files_ok = self.reader.check_paths()
             while True:
+                trash = 3
                 print(f"{ax1} Start Simulation")
                 print(f"{ax2} Change paths")
                 print(f"{ax3} Back")
@@ -94,15 +71,17 @@ class Simulator():
                 elif _key == key.ENTER:
                     if line == 1:
                         self.simulate()
+                        trash = 0
                     elif line == 2:
                         self.reader.path_changer_menu()
-                        clear_lines(8)
+                        clear_lines(15)
                         break
                     elif line == 3:
-                        clear_lines(7)
                         return
                 else:
                     pass
+
+                clear_lines(trash)
 
                 if line == 1:
                     ax1 = fs.apply("sim >>", "purple")
@@ -118,5 +97,3 @@ class Simulator():
                     ax1 = fs.apply("      ", "")
                     ax2 = fs.apply("      ", "")
                     ax3 = fs.apply("sim >>", "purple")
-
-                clear_lines(3)
