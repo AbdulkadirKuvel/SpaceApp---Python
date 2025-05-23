@@ -16,7 +16,7 @@ def clear_lines(n = 1):
 
 class Simulator():
     def __init__(self):
-        main_path = ".\\data_in\\My datas"
+        main_path = ".\\data\\Simulation"
         self.people_file = os.path.join(main_path, "Kisiler.txt")
         self.spacecraft_file = os.path.join(main_path, "Araclar.txt")
         self.planets_file = os.path.join(main_path, "Gezegenler.txt")
