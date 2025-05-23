@@ -40,6 +40,7 @@ class FileReading():
         print(f"Planet path: {self.planet_path}")
 
         while True:
+            trash = 4
             print(f"{ax1} Change People path")
             print(f"{ax2} Change Spacecraft path")
             print(f"{ax3} Change Planet path")
@@ -62,9 +63,11 @@ class FileReading():
                     self.planet_path_changer()
                 elif line == 4:
                     return
+                trash += 2
             else:
                 pass
-            clear_lines(4)
+            
+            clear_lines(trash)
 
             if line == 1:
                 ax1 = fs.apply("path >>", "green")
@@ -93,15 +96,43 @@ class FileReading():
     def people_path_changer(self):
         self.people_path = input(fs.apply("New path for people file: ", "yellow"))
         print("New path:", self.people_path)
+        readkey()
 
     def spacecraft_path_changer(self):
         self.spacecraft_path = input(fs.apply("New path for spacecraft file: ", "yellow"))
         print("New path:", self.spacecraft_path)
+        readkey()
 
     def planet_path_changer(self):
         self.planets_path = input(fs.apply("New path for planet file: ", "yellow"))
         print("New path:", self.planets_path)
+        readkey()
 
+    def check_paths(self):
+        print(fs.apply("startup: Searching files in default path", "yellow"))
+        
+        Ok = True
+        print(f"Searching {self.people_path} \t", end="")
+        if (self.control_people()):
+            print(fs.apply("OK", "green"))
+        else:
+            print(fs.apply("FAILED", "red"))
+            Ok = False
+
+        print(f"Searching {self.spacecraft_path} \t", end="")
+        if (self.control_spacecrafts()):
+            print(fs.apply("OK", "green"))
+        else:
+            print(fs.apply("FAILED", "red"))
+            Ok = False
+
+        print(f"Searching {self.planet_path} \t", end="")
+        if (self.control_planets()):
+            print(fs.apply("OK", "green"))
+        else:
+            print(fs.apply("FAILED", "red"))
+            Ok = False
+        return Ok
 
     def control_people(self) -> bool:
         if os.path.exists(self.people_path):
