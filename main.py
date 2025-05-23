@@ -3,31 +3,20 @@
 # import src.utils.FileWriting as fw
 import src.visualization as vis
 from src.Simulator import Simulator
+from src.visualizer import Visualizer
 import fontstyle as fs
 from readchar import readkey, key # type: ignore
 import os
 import sys
-
-
-def visualizer():
-    visualize = vis.Visualization("./data_out/My datas", "Gezegenler.csv",
-                            "Araclar.csv", "Kisiler.csv")
-
-    visualize.read_data()
-    # visualize.plot_planets()
-    visualize.plot_spacecrafts()
-    print("Visualization completed.")
 
 def clear_lines(n=1):
     for _ in range(n):
         sys.stdout.write("\033[F")  # Cursor'u yukarı taşı
         sys.stdout.write("\033[K")  # Satırı temizle
 
-def visualization_menu():
-    pass
-
 def main():
     simulator = Simulator()
+    visualizer = Visualizer()
     print()
     print(fs.apply("-- Spacecraft Simulation --", "cyan"))
 
@@ -57,7 +46,8 @@ def main():
                 simulator.menu()
                 trash += 7
             elif line == 2:
-                visualization_menu()
+                visualizer.menu()
+                trash += 7
             elif line == 3:
                 print("Exiting...")
                 break
