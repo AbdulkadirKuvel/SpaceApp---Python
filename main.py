@@ -1,9 +1,9 @@
-from src.Simulation import Simulation
-import src.utils.FileReading as fr
-import src.utils.FileWriting as fw
+# from src.Simulation import Simulation
+# import src.utils.FileReading as fr
+# import src.utils.FileWriting as fw
 import src.visualization as vis
 from src.Simulator import Simulator
-import fontstyle as fs # type: ignore
+import fontstyle as fs
 from readchar import readkey, key # type: ignore
 import os
 import sys
@@ -38,6 +38,8 @@ def main():
     line = 1
 
     while True:
+        trash = 3
+        
         print(f"{ax1} Simulation")
         print(f"{ax2} Visualization")
         print(f"{ax3} Exit")
@@ -53,6 +55,7 @@ def main():
         elif _key == key.ENTER:
             if line == 1:
                 simulator.menu()
+                trash += 7
             elif line == 2:
                 visualization_menu()
             elif line == 3:
@@ -75,7 +78,7 @@ def main():
             ax2 = fs.apply("  ", "yellow")
             ax3 = fs.apply(">>", "yellow")
             
-        clear_lines(3)
+        clear_lines(trash)
 
 if (__name__ == "__main__"):
     main()
